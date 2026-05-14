@@ -16,13 +16,27 @@ def render(lang: str = "en"):
     l3_bp     = sum(w["bp"] for w in l3)
     total_bp  = l4_latest + l3_bp
 
+    # KPI order matches HTML: Total WAVE BP | L3 Planned | No Coverage | Below 50% of BP
     k1, k2, k3, k4 = st.columns(4)
-    k1.metric(t("sav_k1", "en") if lang == "en" else "WAVE BP 合計（年換算）",
-              f"${total_bp:.1f}M")
-    k2.metric(t("l4_executed", lang), f"${l4_latest:.1f}M ({len(l4)} init.)")
-    k3.metric(t("l3_planned", lang), f"${l3_bp:.1f}M ({len(l3)} init.)")
-    k4.metric(t("sav_k3", "en") if lang == "en" else "WAVEカバレッジなし支出",
-              "~$107M")
+    k1.metric(
+        "Total WAVE BP (Annualized)" if lang == "en" else "WAVE BP 合計（年換算）",
+        f"${total_bp:.1f}M",
+        help=f"L4 ${l4_latest:.1f}M executed ({len(l4)}) · L3 ${l3_bp:.1f}M planned ({len(l3)})"
+    )
+    k2.metric(
+        t("l3_planned", lang),
+        f"${l3_bp:.1f}M",
+        help=f"{len(l3)} initiatives in pipeline"
+    )
+    k3.metric(
+        "Spend — No WAVE Coverage" if lang == "en" else "WAVEカバレッジなし支出",
+        "$107.3M",
+        help="Construction + MRO + Ride Repair" if lang == "en" else "建設＋MRO＋ライド修繕"
+    )
+    k4.metric(
+        "Initiatives Below 50% of BP" if lang == "en" else "BP50%未満のイニシアティブ",
+        "12",
+    )
     st.divider()
 
     # ── Savings Matrix ────────────────────────────────────────────────────────
