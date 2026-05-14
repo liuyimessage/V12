@@ -93,19 +93,6 @@ def render(lang: str = "en"):
     st.title(f"📂 {t('tab_datareq', lang)}")
     st.caption(t("dr_sub", lang))
 
-    # Summary KPIs
-    gaps = sum(1 for d in _DATA_REQS if d["status"] == "gap")
-    partials = sum(1 for d in _DATA_REQS if d["status"] == "partial")
-    ok = sum(1 for d in _DATA_REQS if d["status"] == "ok")
-    high = sum(1 for d in _DATA_REQS if d["priority"] == "High")
-
-    k1, k2, k3, k4 = st.columns(4)
-    k1.metric("🔴 Gaps" if lang == "en" else "🔴 ギャップ", gaps)
-    k2.metric("🟡 Partial" if lang == "en" else "🟡 部分対応", partials)
-    k3.metric("🟢 Available" if lang == "en" else "🟢 取得済", ok)
-    k4.metric("High Priority" if lang == "en" else "高優先度", high)
-    st.divider()
-
     area_key    = "area_en"    if lang == "en" else "area_jp"
     request_key = "request_en" if lang == "en" else "request_jp"
     source_key  = "source_en"  if lang == "en" else "source_jp"
