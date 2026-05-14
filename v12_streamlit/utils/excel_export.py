@@ -33,6 +33,17 @@ def _hdr_font() -> Font:
     return Font(bold=True, size=11, color=_WHITE, name="Calibri")
 
 
+def _safe_sheet_title(name: str, max_len: int = 31) -> str:
+    """
+    Sanitize a string for use as an Excel worksheet name.
+    Excel forbids: [ ] * ? : / and limits to 31 characters.
+    """
+    for ch in r"[]*?:/\\":
+        name = name.replace(ch, "")
+    name = name.strip() or "Business Case"
+    return name[:max_len]
+
+
 def export_business_case(fields: dict) -> bytes:
     """
     Build a single-sheet L2 Business Case workbook from `fields` dict.
@@ -40,7 +51,8 @@ def export_business_case(fields: dict) -> bytes:
     """
     wb = Workbook()
     ws = wb.active
-    ws.title = f"_SPRINT_ - {fields.get('initiative_name', 'Business Case')}"
+    raw_title = fields.get("initiative_name", "Business Case")
+    ws.title = _safe_sheet_title(raw_title)
 
     ws.column_dimensions["A"].width = 32
     ws.column_dimensions["B"].width = 48
