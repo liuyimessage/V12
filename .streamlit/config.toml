@@ -8,3 +8,5 @@ textColor = "#e8eaf0"
 [server]
 headless = true
 port = 8501
+[ui]
+hideSidebarNav = true
