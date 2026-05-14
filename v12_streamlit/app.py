@@ -23,7 +23,7 @@ st.markdown("""
 <style>
 /* Hide Streamlit chrome — stable selectors */
 #MainMenu, footer { visibility: hidden; }
-
+[data-testid="stSidebarNav"] { display: none !important; }
 /* Main content padding */
 .main .block-container {
     padding-top: 1.5rem !important;
