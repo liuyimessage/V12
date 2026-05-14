@@ -22,7 +22,7 @@ T = {
         "kpi_po": "Total POs",
         "kpi_avg": "Avg PO Value",
         "kpi_yoy": "YoY Change (Q1 2026 vs 2025)",
-        "kpi_peak": "Peak Month — Apr 2026",
+        "kpi_peak": "Peak Month — Nov 2025",
         # Spend Pulse
         "trend_hdr": "Monthly Spend Trend ($M)",
         "trend_sub": "All categories · Jan 2024 – Apr 2026",
@@ -30,7 +30,7 @@ T = {
         "yoy_hdr": "Q1 Year-over-Year Comparison",
         "col_month": "Month", "col_2025": "2025 ($M)", "col_2026": "2026 ($M)",
         "col_chg": "Change", "col_note": "Note",
-        "yoy_footnote": "The Apr 2026 WF lease batch ($46.3M) concentrated 2025 spend artificially. Underlying operational spend is broadly stable.",
+        "yoy_footnote": "Note: Q1 2026 is -16.1% vs Q1 2025 ($112.3M vs $133.8M). Feb 2025 was elevated by large lease/tech batches; Jan 2026 is actually higher than Jan 2025. Nov 2025 FA Equip. lease concentration ($46.3M) drove the 2025 monthly peak.",
         # Category Intel
         "cat_pareto_hdr": "Spend by Category — Pareto View",
         "hm_hdr": "Category × Month Heatmap ($M)",
@@ -114,7 +114,7 @@ T = {
         "kpi_po": "発注総件数",
         "kpi_avg": "平均発注額",
         "kpi_yoy": "前年比（2026年Q1 vs 2025年）",
-        "kpi_peak": "ピーク月 — 2026年4月",
+        "kpi_peak": "ピーク月 — 2025年11月",
         # Spend Pulse
         "trend_hdr": "月次支出トレンド（百万ドル）",
         "trend_sub": "全カテゴリ · 2024年1月 〜 2026年4月",
@@ -122,7 +122,7 @@ T = {
         "yoy_hdr": "Q1 前年比較",
         "col_month": "月", "col_2025": "2025年（百万ドル）", "col_2026": "2026年（百万ドル）",
         "col_chg": "変化", "col_note": "備考",
-        "yoy_footnote": "2025年4月のウェルズ・ファーゴ一括リース（$46.3M）が人為的に支出を集中させました。実質的な業務支出は概ね安定しています。",
+        "yoy_footnote": "注: 2026年Q1は2025年Q1比-16.1%（$112.3M vs $133.8M）。2025年2月はリース・テック一括により高騰; 2026年1月は2025年1月より高い。2025年11月のFA機器リース集中（$46.3M）が2025年のピーク月を形成。",
         # Category Intel
         "cat_pareto_hdr": "カテゴリ別支出 — パレート図",
         "hm_hdr": "カテゴリ×月 ヒートマップ（百万ドル）",
