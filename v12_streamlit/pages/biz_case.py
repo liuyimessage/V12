@@ -343,6 +343,8 @@ def _bc_modal(lang: str, prefill: dict):
             "Cancel" if lang == "en" else "キャンセル",
             use_container_width=True,
         ):
+            # Close the dialog by clearing the open flag and rerunning
+            st.session_state.bc_open_modal = False
             st.rerun()
 
     with col_gen:
@@ -410,6 +412,8 @@ def _bc_modal(lang: str, prefill: dict):
                 file_name=fn,
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
+            # Close the dialog after the download button appears
+            st.session_state.bc_open_modal = False
 
 
 # ── Main render ────────────────────────────────────────────────────────────────
@@ -546,6 +550,8 @@ def render(lang: str = "en"):
         )
 
     # ── Open modal if triggered ───────────────────────────────────────────────
+    # Keep bc_open_modal = True while dialog is alive so widget reruns inside
+    # the dialog don't accidentally close it. The dialog itself clears this flag
+    # via Cancel or Generate buttons.
     if st.session_state.get("bc_open_modal"):
-        st.session_state.bc_open_modal = False
         _bc_modal(lang=lang, prefill=st.session_state.bc_prefill)
