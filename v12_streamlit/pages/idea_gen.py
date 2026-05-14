@@ -15,24 +15,28 @@ from utils.ai_client import build_system_prompt, chat_completion
 load_dotenv()
 
 _STARTER_CHIPS_EN = [
-    "What categories have no WAVE initiative?",
-    "Suggest 3 new savings ideas for Construction spend ($42M)",
-    "Which initiatives are below 50% of their business case?",
-    "What is the highest-risk supplier concentration?",
-    "Compare F&B WAVE initiatives vs Merchandise WAVE initiatives",
-    "How can we reduce Spend w/o Justification in Clothing/Uniforms?",
-    "What is the FA Equipment Rental spend and what should we do?",
+    "What are the top F&B savings opportunities not yet in WAVE?",
+    "Which vendors have the most consolidation potential based on the spend data?",
+    "Where is maverick or uncontrolled spend most concentrated? What should we do?",
+    "What new WAVE initiatives should we add that are not in the current pipeline?",
+    "Which categories have the highest savings rates in the current WAVE pipeline?",
+    "What quick-win initiatives could we execute in the next 90 days?",
+    "What is the FA Equipment Rental spend and what should we do about it?",
     "How can we improve payment terms to boost working capital?",
+    "Explain the spend pulse trend and the November 2025 spike",
+    "How do I build an L2 business case for a new initiative?",
 ]
 _STARTER_CHIPS_JP = [
-    "WAVEイニシアティブのないカテゴリは？",
-    "建設支出（$42M）の新しい節約アイデアを3つ提案して",
-    "ビジネスケースの50%未満のイニシアティブは？",
-    "最も高リスクのサプライヤー集中度は？",
-    "F&B vs Merchandiseのイニシアティブを比較して",
-    "Clothing/Uniformsの正当理由なし支出を減らすには？",
+    "WAVEにまだ含まれていないF&B節約機会は？",
+    "支出データから最も統合可能性が高いベンダーは？",
+    "正当理由なし支出が最も集中しているのはどこか？何をすべきか？",
+    "現在のパイプラインにない新しいWAVEイニシアティブは？",
+    "現在のWAVEパイプラインで最も節約率が高いカテゴリは？",
+    "今後90日以内に実行できるクイックウィンは？",
     "FA設備レンタル支出（$87M）について何をすべきか？",
     "支払条件を改善して運転資本を改善するには？",
+    "支出トレンドと2025年11月のスパイクを説明して",
+    "新しいイニシアティブのL2ビジネスケースをどう構築するか？",
 ]
 
 
