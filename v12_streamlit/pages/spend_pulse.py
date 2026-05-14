@@ -21,6 +21,11 @@ def render(lang: str = "en"):
     st.divider()
 
     # ── Two-column charts (matches HTML grid-2) ───────────────────────────────
+    # Both charts share the same height and margin so they sit flush together.
+    _CHART_H  = 380   # fixed height — identical for both panels
+    _MARGIN   = dict(l=50, r=20, t=20, b=80)   # generous bottom for 45° labels
+    _AXIS_CFG = dict(tickangle=-45, gridcolor="#2a2f40", tickfont=dict(size=10))
+
     col_left, col_right = st.columns(2)
 
     # Monthly trend line (left column)
@@ -39,11 +44,13 @@ def render(lang: str = "en"):
             annotation_text="Avg",
         )
         fig_trend.update_layout(
+            height=_CHART_H,
             plot_bgcolor="#1a1f2e", paper_bgcolor="#1a1f2e",
-            margin=dict(l=10, r=10, t=10, b=10),
-            xaxis=dict(tickangle=-45, gridcolor="#2a2f40"),
-            yaxis=dict(gridcolor="#2a2f40"),
+            margin=_MARGIN,
+            xaxis={**_AXIS_CFG, "title": ""},
+            yaxis=dict(title="Spend ($M)", gridcolor="#2a2f40"),
             hovermode="x unified",
+            showlegend=False,
         )
         st.plotly_chart(fig_trend, use_container_width=True)
 
@@ -60,10 +67,17 @@ def render(lang: str = "en"):
             template="plotly_dark",
         )
         fig_area.update_layout(
+            height=_CHART_H,
             plot_bgcolor="#1a1f2e", paper_bgcolor="#1a1f2e",
-            margin=dict(l=10, r=10, t=10, b=10),
-            xaxis=dict(tickangle=-45, gridcolor="#2a2f40"),
-            yaxis=dict(gridcolor="#2a2f40"),
+            margin=_MARGIN,
+            xaxis={**_AXIS_CFG, "title": ""},
+            yaxis=dict(title="Spend ($M)", gridcolor="#2a2f40"),
+            legend=dict(
+                orientation="v",
+                x=1.01, y=1,
+                font=dict(size=10),
+                bgcolor="rgba(0,0,0,0)",
+            ),
         )
         st.plotly_chart(fig_area, use_container_width=True)
 
