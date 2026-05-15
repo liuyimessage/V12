@@ -343,14 +343,6 @@ def render(lang: str = "en"):
             st.markdown(msg["content"])
 
             if msg["role"] == "assistant":
-                # U4: "Save to Business Case" — navigates to BC Builder tab
-                bc_label = "📋 Save to Business Case" if lang == "en" else "📋 ビジネスケースに保存"
-                if st.button(bc_label, key=f"v12_save_bc_{i}"):
-                    st.session_state.bc_prefill = _extract_bc_prefill(msg["content"])
-                    st.session_state.bc_open_modal = True
-                    st.session_state.nav_page = "biz_case"
-                    st.rerun()
-
                 # U3: Follow-up chips only beneath the LAST AI message
                 if i == last_ai_idx:
                     followups = st.session_state.get("followup_chips", [])
