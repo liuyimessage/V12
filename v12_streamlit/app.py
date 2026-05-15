@@ -23,7 +23,10 @@ st.markdown("""
 <style>
 /* Hide Streamlit chrome — stable selectors */
 #MainMenu, footer { visibility: hidden; }
+
+/* Hide auto-generated multi-page sidebar nav */
 [data-testid="stSidebarNav"] { display: none !important; }
+
 /* Main content padding */
 .main .block-container {
     padding-top: 1.5rem !important;
@@ -107,12 +110,16 @@ with st.sidebar:
             "assumptions":    f"📝 {t('tab_assumptions', lang)}",
         }[x],
         label_visibility="collapsed",
+        key="nav_page",
     )
 
     st.divider()
     st.caption("🔒 Draft for Review · Internal only")
 
 # ── Page routing ──────────────────────────────────────────────────────────────
+# nav_page is the keyed radio value; other pages can set it to navigate
+page = st.session_state.get("nav_page", "spend_pulse")
+
 if page == "spend_pulse":
     import pages.spend_pulse as pg
 elif page == "cat_intel":
