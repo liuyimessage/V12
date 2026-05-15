@@ -244,6 +244,22 @@ def render(lang: str = "en"):
     st.title(f"💡 {t('tab_idea', lang)}")
     st.caption(t("idea_sub", lang))
 
+    # ── Larger chat input box ─────────────────────────────────────────────────
+    st.markdown(
+        """<style>
+        [data-testid="stChatInput"] textarea {
+            min-height: 72px !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+        /* Give the chat history section breathing room */
+        [data-testid="stChatMessageContainer"] {
+            min-height: 200px;
+        }
+        </style>""",
+        unsafe_allow_html=True,
+    )
+
     # ── Grounded-in badge ─────────────────────────────────────────────────────
     st.markdown(
         '<div class="v12-badge">'
@@ -327,12 +343,13 @@ def render(lang: str = "en"):
             st.markdown(msg["content"])
 
             if msg["role"] == "assistant":
-                # U4: "Save to Business Case" button on every AI reply
+                # U4: "Save to Business Case" — navigates to BC Builder tab
                 bc_label = "📋 Save to Business Case" if lang == "en" else "📋 ビジネスケースに保存"
                 if st.button(bc_label, key=f"v12_save_bc_{i}"):
                     st.session_state.bc_prefill = _extract_bc_prefill(msg["content"])
                     st.session_state.bc_open_modal = True
-                    st.switch_page("pages/biz_case.py")
+                    st.session_state.nav_page = "biz_case"
+                    st.rerun()
 
                 # U3: Follow-up chips only beneath the LAST AI message
                 if i == last_ai_idx:
